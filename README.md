@@ -10,3 +10,4 @@ Python helper tool for basic code generation & package creation
 
 - [Package a project](https://packaging.python.org/tutorials/packaging-projects/)
 - [Package data](https://setuptools.readthedocs.io/en/latest/userguide/datafiles.html)
+- [Classifiers](https://pypi.org/classifiers/)
