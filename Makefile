@@ -17,7 +17,7 @@ test:
 	$(TEST_RUNNER) -m unittest
 
 run:
-	$(PYTHON) -m src
+	$(PYTHON) -m src.pyman
 
 clean:
 	fdfind -I cache . -x rm -rf
