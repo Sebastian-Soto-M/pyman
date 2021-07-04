@@ -1,11 +1,7 @@
-from os.path import join
 from typing import Any
-from pathlib import Path
 from argparse import ArgumentParser, Namespace
 from typing import Optional, Set
 from pydantic import BaseModel
-
-FORMAT = '| %-20s\t=>\t%-30s[%.3f]'
 
 
 class Argument:
@@ -55,13 +51,6 @@ class CLI(BaseModel):
 
     class Config:
         arbitrary_types_allowed = True
-
-
-def templates_path(dir: str, file: str) -> str:
-    file_path = join(Path(__file__).parent.parent, 'templates', dir, file)
-    with open(file_path, 'r') as template:
-        data = template.read()
-    return data
 
 
 def cli_options() -> Namespace:
