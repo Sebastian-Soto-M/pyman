@@ -1,8 +1,8 @@
 import logging
+from os import remove
 from os.path import join
 from pathlib import Path
 import time
-from unittest.case import skip
 from . import FORMAT
 from src.pyman import utils
 from unittest import TestCase, main
@@ -23,7 +23,7 @@ class TestUtils(TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        os.remove('demofile.txt')
+        remove(cls.makefile_path)
 
     def setUp(self):
         self.startTime = time.time()
@@ -36,7 +36,7 @@ class TestUtils(TestCase):
 
     def test_get_template_path(self):
         expected = self.makefile_path
-        result = utils.get_template_path('common', 'Makefile')
+        result = utils.get_template_path('common', 'Makefile.bak')
         self.assertEqual(result, expected)
 
     def test_parse_file(self):
@@ -47,6 +47,10 @@ class TestUtils(TestCase):
 
     def test_replace_var(self):
         utils.replace_var(self.makefile_path, 'python', 'py')
+        content = utils.parse_file(self.makefile_path)
+        expected = 'PYTHON=py'
+        lines = content.split('\n')
+        self.assertEqual(lines[0], expected)
 
 
 if __name__ == "__main__":
