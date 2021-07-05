@@ -51,7 +51,3 @@ class TestUtils(TestCase):
         expected = 'PYTHON=py'
         lines = content.split('\n')
         self.assertEqual(lines[0], expected)
-
-
-if __name__ == "__main__":
-    main()

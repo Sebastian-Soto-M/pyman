@@ -1,0 +1,6 @@
+[run]
+source=
+    tests
+    src
+omit=
+    /home/snsm/.config/virtualenvs/pyman
