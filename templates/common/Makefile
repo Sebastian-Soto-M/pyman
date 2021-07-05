@@ -1,4 +1,4 @@
-PYTHON=python
+PYTHON=$[python]
 TEST_RUNNER=coverage run
 
 .PHONY:
