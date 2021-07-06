@@ -1,6 +1,6 @@
 from .enums import LogMessage
 
 
-class FileExistsError(Exception):
+class FolderExistsError(Exception):
     def __init__(self, path: str):
-        super().__init__(message=f'{LogMessage.EXISTING_FOLDER.value}: {path}')
+        super().__init__(f'{LogMessage.EXISTING_FOLDER.value}: {path}')

@@ -1,4 +1,5 @@
 import logging
+import time
 import sys
 logging_mode = logging.DEBUG
 
@@ -24,3 +25,23 @@ logging_mode = logging.INFO if not CLI_OPTS.verbose else logging.DEBUG
 FORMAT = '| %-20s\t=>\t%-30s[%.3f]'
 logging.basicConfig(level=logging_mode, stream=sys.stdout,
                     format='%(levelname)s\t%(message)s')
+
+
+class TimedTestCase:
+    __start_time: float = 0.0
+    __end_time: float = 0.0
+
+    def start(self):
+        self.__start_time = time.time()
+
+    def __end(self):
+        self.__end_time = time.time() - self.__start_time
+
+    def __log(self, logger: logging.Logger, class_name: str, id: str):
+        logger.info(
+            FORMAT % (class_name, id.split('.')[-1], self.__end_time)
+        )
+
+    def tear_down(self, logger: logging.Logger, class_name: str, id: str):
+        self.__end()
+        self.__log(logger, class_name, id)
