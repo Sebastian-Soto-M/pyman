@@ -1,5 +1,6 @@
-from typing import Any
 from argparse import Namespace
+from typing import Any
+
 from .shared.models import CLI, Argument
 
 

@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
-from typing import List
 from os.path import join
 from pathlib import Path
-from src.pyman.shared.models.exceptions import FolderExistsError
+from typing import List
 
+from src.pyman.shared.models.exceptions import FolderExistsError
 from src.pyman.utils import FileManager
 
 from .enums import FileTemplates

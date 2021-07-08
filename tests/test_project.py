@@ -1,11 +1,12 @@
 import logging
 import shutil
 from os.path import join
-
-from src.pyman.shared.models.project import Project, BasicProject
-from . import TimedTestCase
 from pathlib import Path
 from unittest import TestCase
+
+from src.pyman.shared.models.project import BasicProject, Project
+
+from . import TimedTestCase
 
 
 class TestBasicProject(TestCase):

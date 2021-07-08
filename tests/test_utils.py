@@ -1,11 +1,13 @@
 import logging
+import time
 from os import remove
 from os.path import join
 from pathlib import Path
-import time
-from . import FORMAT
-from src.pyman.utils import FileManager
 from unittest import TestCase
+
+from src.pyman.utils import FileManager
+
+from . import FORMAT
 
 
 class TestUtils(TestCase):
