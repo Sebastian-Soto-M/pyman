@@ -1,5 +1,4 @@
 PYTHON=python
-TEST_RUNNER=coverage run
 
 .PHONY:
 	clean
@@ -14,10 +13,16 @@ install:
 	$(PYTHON) -m pip install -r requirements.txt
 
 test:
-	$(TEST_RUNNER) -m unittest
+	coverage run -m unittest
 
 run:
 	$(PYTHON) -m src.pyman
 
 clean:
 	fdfind -I cache . -x rm -rf
+
+report:
+	coverage html
+
+partial-report:
+	coverage html --skip-covered

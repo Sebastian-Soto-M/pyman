@@ -22,8 +22,6 @@ class Project(ABC):
     def create_module(self, relative_path: List[str], with_main: bool =
                       False) -> Path:
         mod = Path(join(self.root_path, *relative_path))
-        if mod.exists():
-            raise FolderExistsError(str(mod))
         mod.mkdir(exist_ok=True)
         self._add_file(relative_path, FileTemplates.INIT)
         if with_main:

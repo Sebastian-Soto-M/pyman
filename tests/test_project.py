@@ -1,7 +1,6 @@
 import logging
 import shutil
 from os.path import join
-from src.pyman.shared.models.exceptions import FolderExistsError
 
 from src.pyman.shared.models.project import Project, BasicProject
 from . import TimedTestCase
@@ -36,15 +35,6 @@ class TestBasicProject(TestCase):
         result = [f.name for f in mod.iterdir()]
         expected = ['__init__.py']
         self.assertEqual(result, expected)
-
-    def test_create_existing_module(self):
-        self.project.create_module(['mod_test'])
-        with self.assertRaises(FolderExistsError) as e:
-            self.project.create_module(['mod_test'])
-        exception = e.exception
-        self.assertEqual(
-            exception,
-            'The program stopped, the project specified already existed: /tmp/tests/pyman/mod_test')
 
     def test_create_module_with_main(self):
         mod = self.project.create_module(['mod_w_main_test'], True)
