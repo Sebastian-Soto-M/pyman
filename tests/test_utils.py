@@ -48,7 +48,7 @@ class TestUtils(TestCase):
         self.assertEqual(lines[0], expected)
 
     def test_replace_var(self):
-        FileManager.replace_var(self.makefile_path, 'python', 'py')
+        FileManager.replace_variables(self.makefile_path, {'python': 'py'})
         content = FileManager.parse_file(self.makefile_path)
         expected = 'PYTHON=py'
         lines = content.split('\n')

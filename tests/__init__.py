@@ -2,7 +2,7 @@ import logging
 import sys
 import time
 
-logging_mode = logging.DEBUG
+logging_mode = logging.INFO
 
 """
 import logging

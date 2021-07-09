@@ -5,6 +5,8 @@ PYTHON=python
 	install
 	run
 	test
+	report
+	partial-report
 
 .DEFAULT_GOAL: test
 
