@@ -1,22 +1,19 @@
 import shutil
 from os.path import join
 from pathlib import Path
-from typing import Any, Union
+from typing import Any
 
-from src.pyman.shared.models.enums import FileTemplates
+from src.pyman.shared.models.enums import ETemplate
 
 
 class FileManager:
     @staticmethod
-    def get_template_path(dir: str, file: Union[str, FileTemplates]) -> str:
+    def get_template_path(template: ETemplate) -> str:
         """
         Returns the template file requested from the templates folder
         """
-        if isinstance(file, FileTemplates):
-            return join(Path(__file__).parent.parent.parent,
-                        'templates', dir, file.value)
         return join(Path(__file__).parent.parent.parent,
-                    'templates', dir, file)
+                    'templates', template.type, template.file_name)
 
     @staticmethod
     def parse_file(file_path: str) -> str:
@@ -54,3 +51,10 @@ class FileManager:
         file = Path(file_path)
         file.touch()
         return file
+
+    @staticmethod
+    def add_template(template: ETemplate, target_path: Path) -> str:
+        template_path = FileManager.get_template_path(template)
+        new_file_path = FileManager.copy_file(
+            template_path, join(target_path, template.file_name))
+        return new_file_path

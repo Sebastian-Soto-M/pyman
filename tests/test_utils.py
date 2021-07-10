@@ -5,6 +5,7 @@ from os.path import join
 from pathlib import Path
 from unittest import TestCase
 
+from src.pyman.shared.models.enums import ETemplate
 from src.pyman.utils import FileManager
 
 from . import FORMAT
@@ -37,8 +38,8 @@ class TestUtils(TestCase):
         self.logger.info(info)
 
     def test_get_template_path(self):
-        expected = self.makefile_path
-        result = FileManager.get_template_path('common', 'Makefile.bak')
+        expected = self.makefile_path.split('.')[0]
+        result = FileManager.get_template_path(ETemplate.MAKEFILE)
         self.assertEqual(result, expected)
 
     def test_parse_file(self):

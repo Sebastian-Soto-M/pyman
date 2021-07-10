@@ -17,7 +17,6 @@ class TestBasicProject(TestCase):
         cls.logger = logging.getLogger(cls.__name__)
         cls.project: Project = BasicProject('pyman', str(cls.tmp_folder))
         cls.ttc = TimedTestCase()
-        cls.tmp_folder.mkdir(exist_ok=True)
 
     @classmethod
     def tearDownClass(cls):
